@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campaign Website</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        function scrollToSection(id, event) {
+            event.preventDefault();
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        let currentModal = null;
+        
+        function openModal(modalId) {
+            if (currentModal) {
+                document.getElementById(currentModal).style.display = "none";
+            }
+            document.getElementById(modalId).style.display = "flex";
+            currentModal = modalId;
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = "none";
+            currentModal = null;
+        }
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, black, #8B0000);
+            color: white;
+        }
+
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 50px;
+            text-align: center;
+            width: 85%;
+            margin: auto;
+        }
+
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 10px;
+            background: black;
+            padding: 15px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid red;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 0px 15px rgba(255, 0, 0, 0.8);
+        }
+
+        .gallery-image {
+            width: 100%;
+            max-width: 250px;
+            border-radius: 10px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: black;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 50%;
+            text-align: center;
+            box-shadow: 0px 0px 15px rgba(255, 0, 0, 0.8);
+            position: relative;
+            border: 2px solid red;
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 44px;
+            cursor: pointer;
+            color: white;
+        }
+
+        .modal-title {
+            font-size: 5em;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        .modal-arrow {
+    font-size: 5rem; /* Large arrow size */
+    color: #ff073a;
+    display: block;
+    margin-top: 20px;
+    animation: pulse 1.5s infinite alternate;
+        }
+        .section {
+            border: 2px solid red;
+            padding: 50px;
+            margin: 20px auto;
+            width: 85%;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px rgba(255, 0, 0, 0.8);
+        }
+
+        #home.section {
+            border: none;
+            box-shadow: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#" onclick="scrollToSection('home', event)">Home</a></li>
+                <li><a href="#" onclick="scrollToSection('gallery', event)">Gallery</a></li>
+                <li><a href="#" onclick="scrollToSection('resources', event)">Resources</a></li>
+                <li><a href="#" onclick="scrollToSection('team', event)">Our Team</a></li>
+                <li><a href="#" onclick="scrollToSection('about', event)">About Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="section">
+        <img src="home.jpg" class="home-image" alt="">
+    </section>
+
+    <section id="gallery" class="section">
+        <h1>Gallery</h1>
+        <h1 class="gallery-title">Learn more about alcohol</h1>
+
+        <div class="gallery-container">
+            <div class="gallery-item" onclick="openModal('modal1')">
+                <img src="images/gallery1.jpg" class="gallery-image" alt="Gallery Image 1">
+                <p>What Is Alcoholism:</p>
+            </div>
+            <div class="gallery-item" onclick="openModal('modal3')">
+                <img src="images/gallery2.jpg" class="gallery-image" alt="Gallery Image 2">
+                <p>Statistics about Underage drinking:</p>
+            </div>
+            <div class="gallery-item" onclick="openModal('modal4')">
+                <img src="images/gallery3.jpg" class="gallery-image" alt="Gallery Image 3">
+                <p>Common effects of drinking:</p>
+            </div>
+            <div class="gallery-item" onclick="openModal('modal8')">
+                <img src="images/gallery4.jpg" class="gallery-image" alt="Gallery Image 4">
+                <p>Common Causes of Drinking:</p>
+            </div>
+            <div class="gallery-item" onclick="openModal('modal7')">
+                <img src="images/gallery5.jpg" class="gallery-image" alt="Gallery Image 5">
+                <p>Facts about drinking:</p>
+            </div>
+            <div class="gallery-item" onclick="openModal('modal10')">
+                <img src="images/gallery6.jpg" class="gallery-image" alt="Gallery Image 6">
+                <p>Tips how to avoid alcohol:</p>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="resources" class="section">
+        <h1>Resources</h1>
+        <p>Wala pang resources.</p>
+    </section>
+
+    <section id="team" class="section">
+        <h1>Our Team</h1>
+        <p>Classmates ni Gab.</p>
+    </section>
+
+    <section id="about" class="about-section">
+        <h1 class="about-title">We are 3D (Drinks Destroy Dreams)</h1>
+        <p class="about-text">Dedicated to advocating and raising awareness about the dangers of alcoholism and underage drinking.</p>
+        <p class="about-text">Join us in making a difference—support 3D today!</p>
+    </section>
+</body>
+</html>
+
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal1')">&times;</span>
+            <h2>What Is Alcoholism:</h2>
+            <p>Alcoholism is a condition where a person cannot control their drinking, leading to addiction and health problems.</p>
+            <span class="nav-arrows next-arrow" onclick="openModal('modal2')">&#9654;</span>
+        </div>
+    </div>
+
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal2')">&times;</span>
+            <h2>Did You Know?</h2>
+            <p>Alcohol provides temporary happiness in exchange for lifetime regret. Don't let the bottle destroy your future. Control the alcohol before it controls you.</p>
+            <span class="nav-arrows prev-arrow" onclick="openModal('modal1')">&#9664;</span>
+        </div>
+    </div>
+
+    <div id="modal3" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal3')">&times;</span>
+            <h2>Statistics about Underage Drinking</h2>
+            <p>There are 2.6 million deaths annually related to alcohol consumption.</p>
+            <p>In North America, 600,000 youth (ages 12-17) have drank alcohol in their lifetime, which is 22% of their population.</p>
+            <p>1/3 of the Filipino adult population engages in heavy drinking (consuming 6 or more bottles of alcoholic beverages).</p>
+        </div>
+    </div>
+
+    <div id="modal8" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal8')">&times;</span>
+            <h2>Common Causes of Drinking</h2>
+            <p>ill add once i know the causes</p>
+        </div>
+    </div>
+ 
+    <div id="modal7" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal7')">&times;</span>
+            <h2>Facts about drinking:</h2>
+            <p>ill add once i know the facts</p>
+        </div>
+     
+    </div>
+
+    <div id="modal4" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal4')">&times;</span>
+            <h2>Common Effects of Drinking</h2>
+            <p>Drinking alcohol can cause immediate effects such as <strong>IMPAIRED JUDGMENT</strong> and <strong>COORDINATION</strong>, increasing the risk of <strong>ACCIDENTS</strong> and injuries.</p>
+            <p>Many people experience <strong>NAUSEA</strong> and <strong>VOMITING</strong>, especially after consuming large amounts.</p>
+            <p>Alcohol also causes dehydration, which contributes to <strong>HANGOVERS</strong>, leading to headaches, fatigue, and dizziness the next day.</p>
+            <span class="nav-arrows next-arrow" onclick="openModal('modal5')">&#9654;</span>
+        </div>
+    </div>
+    <div id="modal10" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal10')">&times;</span>
+            <h2>Tips How to Avoid Alcohol</h2>
+            <p>Here are some tips to avoid alcohol...</p>
+        </div>
+    </div>
+    
+
+    <div id="modal5" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal5')">&times;</span>
+            <h2>Long Term Effects of Drinking</h2>
+            <p>Liver Damage</p>
+            <p>Brain Damage</p>
+            <p>Weakened Immune System</p>
+            <p><strong>ADDICTION!</strong></p>
+            <span class="nav-arrows prev-arrow" onclick="openModal('modal4')">&#9664;</span>
+        </div>
+        <div id="modal10" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('modal10')">&times;</span>
+                <h2>Tips How to Avoid Alcohol</h2>
+                <p>Here are some tips to avoid alcohol...</p>
+            </div>
+        </div>
+        
+        
+ 
