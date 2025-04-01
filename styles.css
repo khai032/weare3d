@@ -572,7 +572,7 @@ nav ul li a:hover {
 
 @media (max-width: 768px) {
     nav {
-        position: fixed;
+        position: absolute;
         top: 0;
         left: 0;
         width: 100%;
@@ -581,19 +581,29 @@ nav ul li a:hover {
     }
 
     nav ul {
-        display: flex;
-        flex-direction: column;
+        display: block;
+        text-align: center;
         padding: 10px;
     }
 
     nav ul li {
-        text-align: center;
+        display: block;
         padding: 10px 0;
     }
 
-    /* Ensure content is pushed down when menu is open */
+    /* Push content down */
     body {
-        padding-top: 60px; /* Adjust this value based on navbar height */
+        margin-top: 80px; /* Adjust if needed */
+    }
+}
+
+@media (max-width: 768px) {
+    nav ul {
+        display: none;
+    }
+
+    nav ul.show {
+        display: block;
     }
 }
 

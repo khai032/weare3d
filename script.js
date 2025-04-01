@@ -38,3 +38,13 @@ function closeModal(modalId) {
         modal.style.display = "none";
     }
 }
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const menu = document.querySelector("nav ul");
+    const toggle = document.querySelector(".menu-toggle"); // Adjust based on your HTML
+
+    toggle.addEventListener("click", function () {
+        menu.classList.toggle("show");
+    });
+});
